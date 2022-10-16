@@ -1,6 +1,6 @@
 A tauri app for modular synth usage, 
 
-Peding implementation 
+Peding implementation :
 
 For wavetable: front end connection implementation
 
