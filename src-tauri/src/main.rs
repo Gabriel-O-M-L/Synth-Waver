@@ -6,9 +6,9 @@ mod synths;
 use rodio::{OutputStream, source::Source};
 
 #[tauri::command]
-fn waveTable(sampleRate: &u32,capacity: &usize,frequency: &f32){
-    let mut oscillator: synths::wavetable::WaveTableOscillator = synths::create_wave_table_oscilator(*sampleRate, *capacity);
-    oscillator = synths::set_wave_table_frequency(oscillator, *frequency);
+fn waveTable(sampleRate: u32,capacity: usize,frequency: f32){
+    let mut oscillator: synths::wavetable::WaveTableOscillator = synths::create_wave_table_oscilator(sampleRate, capacity);
+    oscillator = synths::set_wave_table_frequency(oscillator, frequency);
     print!("{:?}", oscillator);
     let (_stream, stream_handle) = OutputStream::try_default().unwrap();
     let _result = stream_handle.play_raw(oscillator.convert_samples());
@@ -22,7 +22,7 @@ fn greet(name: &str) -> String {
 }
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![greet])
+        .invoke_handler(tauri::generate_handler![waveTable])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

@@ -1,9 +1,23 @@
+<script>
+    import Types from './synthSelector.svelte'
+    let visibility = false;
 
-   <div class="sidebar">
-      <button class="button">New  Synth</button>
+    function hide(){
+        visibility = !visibility
+    }
+    
+</script>
+    <div class="sidebar">
+      <button class="button" on:click={hide}>New  Synth</button>
       <button class="button">Load Synth</button>
       <button class="setting"></button>
     </div>
+
+    {#if visibility}
+        <Types/>
+    {/if}
+
+    
       
     <style>
     .sidebar{

@@ -5,7 +5,8 @@
 </script>
 
 <Sidebar/>
-<Types/>
+
+
 
 
 
