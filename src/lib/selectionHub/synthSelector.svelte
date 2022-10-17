@@ -2,15 +2,15 @@
     import { invoke } from "@tauri-apps/api/tauri"
     let sampleRate = 44100
     let capacity = 64
-    let frequency = 440.0
-    async function waveTableOscilate(){
-      let test = await invoke('waveTable',{sampleRate,capacity,frequency})
+    let frequency = 349.228
+    function waveTableOscilate(){
+        invoke('waveTable',{sampleRate,capacity,frequency})
     }
     async function additiveOscilate(){
-      let test = await invoke('additive',{sampleRate,capacity,frequency})
+      await invoke('additive',{sampleRate,capacity,frequency})
     }
     async function subtractiveOscilate(){
-      let test = await invoke('subtractive',{sampleRate,capacity,frequency})
+      await invoke('subtractive',{sampleRate,capacity,frequency})
     }
     async function fmOscilate(){
       let test = await invoke('fm',{sampleRate,capacity,frequency})
@@ -22,7 +22,7 @@
       let test = await invoke('vector',{sampleRate,capacity,frequency})
     }
     async function granularOscilate(){
-      let test = await invoke('granular',{sampleRate,capacity,frequency})
+      await invoke('granular',{sampleRate,capacity,frequency})
     }
 </script>
 
