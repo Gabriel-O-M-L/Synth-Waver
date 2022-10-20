@@ -1,28 +1,30 @@
 <script>
     import { invoke } from "@tauri-apps/api/tauri"
+    // import {wavecomponent} from "../synthOptions/wavetable.svelte"
     let sampleRate = 44100
     let capacity = 64
-    let frequency = 349.228
-    function waveTableOscilate(){
-        invoke('waveTable',{sampleRate,capacity,frequency})
+    let noteSystem = 1
+    let frequency = 440.0
+    async function waveTableOscilate(){
+      await invoke('waveTable',{sampleRate,capacity,frequency})
     }
     async function additiveOscilate(){
-      await invoke('additive',{sampleRate,capacity,frequency})
+      await invoke('additive',{sampleRate,capacity})
     }
     async function subtractiveOscilate(){
-      await invoke('subtractive',{sampleRate,capacity,frequency})
+      await invoke('subtractive',{sampleRate,capacity})
     }
     async function fmOscilate(){
-      let test = await invoke('fm',{sampleRate,capacity,frequency})
+      await invoke('fm',{sampleRate,capacity})
     }
     async function sampleBasedOscilate(){
-      let test = await invoke('sampleBased',{sampleRate,capacity,frequency})
+      await invoke('sampleBased',{sampleRate,capacity})
     }
     async function vectorOscilate(){
-      let test = await invoke('vector',{sampleRate,capacity,frequency})
+      await invoke('vector',{sampleRate,capacity})
     }
     async function granularOscilate(){
-      await invoke('granular',{sampleRate,capacity,frequency})
+      await invoke('granular',{sampleRate,capacity})
     }
 </script>
 
@@ -35,9 +37,8 @@
         <div class="spacing"></div>
         <button class="type" on:click={subtractiveOscilate}>Subtractive Synthesis</button>
         <div class="spacing"></div>
-        <button class="type" on:click={fmOscilate}>FM Synthesis</button>
-        <div class="spacing"></div>
     </div>
+    <div style="height: 100%; width: 5%"></div>
     <div class="column">
         <div class="spacing"></div>
         <button class="type" on:click={sampleBasedOscilate}>Sample-based Synthesis</button>
@@ -48,10 +49,12 @@
         <div class="spacing"></div>
     </div>
 </div>
+<button class="centerButton" on:click={fmOscilate}>FM Synthesis</button>
 <style>
     .row{
         position: relative;
         display: flex;
+        width: 95%;
         flex-direction: row;
         left: 80px;
     }
@@ -67,8 +70,16 @@
     }
     .type{
         padding: 15px;
-        width: 90%;
+        width: 100%;
         height: 215px;
+        border-radius: 1%;
+    }
+    .centerButton{
+        padding: 15px;
+        width: 857px;
+        height: 215px;
+        position: relative;
+        left: 550px;
         border-radius: 1%;
     }
     .spacing{

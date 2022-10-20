@@ -1,6 +1,6 @@
 <script>
-  import Sidebar from './lib/selectionHub/sidebarHUB.svelte'
-  import Types from './lib/selectionHub/synthSelector.svelte'
+  import Sidebar from './lib/selectionHub/SidebarHUB.svelte'
+  import Types from './lib/selectionHub/SynthSelector.svelte'
   
 </script>
 
