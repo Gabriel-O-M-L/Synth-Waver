@@ -15,7 +15,8 @@ Sample-based Synthesis,
 Vector Synthesis,
 Granular Synthesis,
 
-##As of this moment the functions that are supported for wave table:
+#As of this moment the functions that are supported for wave table:
+
 Square wave
 
 Sin wave
