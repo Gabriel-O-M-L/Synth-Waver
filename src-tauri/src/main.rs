@@ -4,7 +4,6 @@
 )]
 mod synths;
 mod notes;
-use tokio;
 use notes::create_notes_keyboard;
 use notes::twelve_tone::TwelveTone;
 use rodio::{OutputStream, source::Source};
@@ -23,20 +22,9 @@ async fn waveTable(sampleRate: u32,capacity: usize,frequency: f32,waveform: i8){
     std::thread::sleep(std::time::Duration::from_secs(30));
 } 
 
-#[tauri::command]
-async fn inputHandler(noteSystem: i8,sampleRate: u32,capacity: usize){
-    let keyboard: TwelveTone = twelve_tone_keyboard();
-    tokio::spawn(async{
-        loop{
-
-        }
-    });
-}
-
-
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![waveTable,inputHandler])
+        .invoke_handler(tauri::generate_handler![waveTable])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

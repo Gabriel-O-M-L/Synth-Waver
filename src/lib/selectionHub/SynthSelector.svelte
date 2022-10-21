@@ -1,12 +1,15 @@
 <script>
     import { invoke } from "@tauri-apps/api/tauri"
+    import Wavetable from "../synthOptions/wavetable.svelte";
     // import {wavecomponent} from "../synthOptions/wavetable.svelte"
+    import WaveComponent from "../synthTypes/wavetable/WavetableForm.svelte"
     let sampleRate = 44100
     let capacity = 64
     let noteSystem = 1
     let frequency = 440.0
-    async function waveTableOscilate(){
-      await invoke('waveTable',{sampleRate,capacity,frequency})
+    let visibility = 1;
+    function waveTableOscilate(){
+      visibility = 2;
     }
     async function additiveOscilate(){
       await invoke('additive',{sampleRate,capacity})
@@ -27,7 +30,7 @@
       await invoke('granular',{sampleRate,capacity})
     }
 </script>
-
+{#if visibility == 1}
 <div class="row">
     <div class="column">
         <div class="spacing"></div>
@@ -50,6 +53,11 @@
     </div>
 </div>
 <button class="centerButton" on:click={fmOscilate}>FM Synthesis</button>
+{/if}
+{#if visibility == 2}
+  <WaveComponent/>
+{/if}
+
 <style>
     .row{
         position: relative;

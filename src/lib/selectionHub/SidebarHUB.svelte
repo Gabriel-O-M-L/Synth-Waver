@@ -86,4 +86,7 @@
         background-repeat: no-repeat;
         border-radius: 50%;
     }
+    .settings:hover{
+        background-color:#17202a;
+    }
 </style>
