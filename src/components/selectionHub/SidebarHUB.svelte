@@ -1,5 +1,10 @@
 <script>
     import Types from './SynthSelector.svelte'
+    import {synthState} from "../../stores/store"
+    let currentState
+    synthState.subscribe(state => {
+        currentState = state
+    });
     let items = [
         {
             label: "New Synth",
@@ -18,6 +23,7 @@
     export let activeTabValue = 1;
     const handleClick = tabValue => () => (activeTabValue = tabValue); 
 </script>
+    {#if currentState == 0}
     <ul class="sidebar">
         {#each items as item}
             <li style="list-style: none;">
@@ -32,7 +38,7 @@
         {/each}
         <button class="setting" on:click={placeholder}></button>
     </ul>
-
+    {/if}
     {#each items as item}
         {#if activeTabValue == item.value}
             <div>

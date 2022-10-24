@@ -1,8 +1,8 @@
 <script>
     import { invoke } from "@tauri-apps/api/tauri"
-    import Wavetable from "../synthOptions/wavetable.svelte";
+    import Wavetable from "../../synths/synthOptions/wavetable.svelte";
     // import {wavecomponent} from "../synthOptions/wavetable.svelte"
-    import WaveComponent from "../synthTypes/wavetable/WavetableForm.svelte"
+    import WaveComponent from "../../synths/synthTypes/wavetable/WavetableForm.svelte"
     let sampleRate = 44100
     let capacity = 64
     let noteSystem = 1
