@@ -1,0 +1,1 @@
+/home/gabriel/Área\ de\ Trabalho/Projetos/Synth-waver/Synth-Waver/Wasm/Synth-Waver/synths/target/wasm32-unknown-unknown/debug/libsynths.rlib: /home/gabriel/Área\ de\ Trabalho/Projetos/Synth-waver/Synth-Waver/Wasm/Synth-Waver/synths/src/lib.rs
