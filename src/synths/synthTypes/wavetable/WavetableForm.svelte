@@ -6,9 +6,10 @@
 
     let capacity = 64
     let sampleRate = 44100
-    
-    function callSynth(frequency){
-        invoke("waveTable",{sampleRate,capacity,frequency})
+    let frequency = 440.0
+    let waveForm = 2
+    function callSynth(){
+        invoke("waveTable",{sampleRate,capacity,frequency,waveForm})
     }
     
     const clickedKeys = {}
@@ -17,13 +18,15 @@
         clickedKeys[event.code] = true
         switch(event.code){
             case KEY.KeyA:{
-                callSynth(55)       
+                while(clickedKeys[event.code] == true){
+                    callSynth()       
+                }
             }
-            case KEY.KeyB:{
-                callSynth(61.173)
+            case KEY.KeyS:{
+                callSynth()
             }
-            case KEY.KeyC:{
-                callSynth(32.703)
+            case KEY.KeyD:{
+                callSynth()
             }
         }
     }else{
